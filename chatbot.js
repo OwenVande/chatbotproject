@@ -1,8 +1,8 @@
 var question;
 var input;
 var time = new Date();
-var hour = time.getUTCHours();
-var minutes = time.getUTCMinutes();
+//var hour = time.getUTCHours();
+//var minutes = time.getUTCMinutes();
 var response = "FRIEND BOT: Hello";
 var borkDrive = 0;
 
@@ -37,7 +37,11 @@ var b = input.search(/time/i);
 var c = input.search(/name/i);
 var d = input.search(/old/i);
 var e = input.search(/picture/i);
-var f = input.search(/bork/i)
+var f = input.search(/bork/i);
+var g = input.search(/weather/i);
+var h = input.search(/color/i);
+var i = input.search(/creator/i);
+var j = input.search(/ /i); // ¯\_(ツ)_/¯ when nothing is written in text box
 
 /*    if(hour > 12){
   hour = hour - 7;
@@ -67,8 +71,8 @@ else if(b > -1){
 }
 
 else if(c > -1){
-  response = "FRIEND BOT: My name is FRIEND BOT. I am here to chat with you when you are lonely. I am your robotic friend."; //what is your name?
-  document.getElementById("chat-area").innerHTML += response + "<br> <hr>";
+  response = "FRIEND BOT: My name is FRIEND BOT. I am here to chat with you when you are lonely. I am your robotic friend.";
+  document.getElementById("chat-area").innerHTML += response + "<br> <hr>"; //what is your name?
   response = "FRIEND BOT: Hello";
 }
 
@@ -78,35 +82,39 @@ else if(d > -1){
   response = "FRIEND BOT: Hello";
 }
 
+else if(e > -1){
+  var x = document.createElement("IMG");
+  x.setAttribute("src", pic[randomNumberGenerator(0,16)]); //show picture
+  x.setAttribute("width", "250");
+  x.setAttribute("alt", "img");
+  borkDrive += 1;
+  document.getElementById("chat-area").innerHTML += "FRIEND BOT: ";
+  document.getElementById("chat-area").appendChild(x);
+  document.getElementById("chat-area").innerHTML += "<br> Bork Drive: " + borkDrive + "0% <br> <hr>";
+
+  if(borkDrive == 10){
+    response = "FRIEND BOT: Bork Drive Max Capacity Achieved!!! Bork Drive Overlaod!!!  Rleasing Borks!!!"; //borkdrive
+    var y = document.createElement("IMG");
+    y.setAttribute("src", "drill doggo.png");
+    y.setAttribute("width", "350");
+    y.setAttribute("alt", "img");
+    document.getElementById("chat-area").innerHTML += response + "<br>";
+    document.getElementById("chat-area").appendChild(y);
+    document.getElementById("chat-area").innerHTML += "<br>";
+    for(var z=0; z<85; z++){
+      document.getElementById("chat-area").innerHTML += "Bork "
+    }
+    response = "FRIEND BOT: Hello";
+    borkDrive = 0;
+  }
+}
+
 else if(f > -1){
   response = "DOGGO: BORK!";
   document.getElementById("chat-area").innerHTML += response + "<br> <hr>"; //how old are you?
   response = "FRIEND BOT: Hello";
 }
 
-else if(e > -1){
-  var x = document.createElement("IMG");
-  x.setAttribute("src", pic[randomNumberGenerator(0,16)]);
-  x.setAttribute("width", "350");
-  x.setAttribute("alt", "img");
-  borkDrive += 1;
-  document.getElementById("chat-area").innerHTML += "FRIEND BOT: ";
-  document.getElementById("chat-area").appendChild(x);
-  document.getElementById("chat-area").innerHTML += "<br> Bork Drive: " + borkDrive + "<br> <hr>";
-
-  if(borkDrive == 10){
-    response = "FRIEND BOT: Bork Drive Max Capacity Achieved!!! Bork Drive Overlaod!!!";
-    var y = document.createElement("Img2");
-    y.setAttribute("src", "drill doggo.png");
-    y.setAttribute("width", "350");
-    y.setAttribute("alt", "img");
-    document.getElementById("chat-area").innerHTML += response + "<br> <br>"; //borkdrive
-    for(var z=0; z<85; z++){
-      document.getElementById("chat-area").innerHTML += "Bork "
-    }
-    response = "FRIEND BOT: Hello";
-  }
-}
 
 /*else if(borkDrive == 2){
   response = "FRIEND BOT: Bork Drive Max Capacity Achieved!!! Bork Drive Overlaod";
@@ -123,9 +131,16 @@ else if(e > -1){
 
 else{
   response = "FRIEND BOT: I don't under stand what you said there. Say something else that I might understand.";
-  document.getElementById("chat-area").innerHTML += response + "<br> <hr>"; //fallback response
+  document.getElementById("chat-area").innerHTML += response + "<br> <hr>";                                   //fallback response
   response = "FRIEND BOT: Hello";
 }
 
 document.getElementById("input").value = null;
 }
+
+document.getElementById("input")
+.addEventListener("keydown", function(event) {
+  if (event.keyCode == 13) {
+    document.getElementById("talkButton").click(); //enter button works
+  }
+});
