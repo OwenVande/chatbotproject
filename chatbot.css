@@ -28,6 +28,11 @@ h4 {
     text-decoration: none;
 }
 
+#askButton {
+  width: 122px;
+  height: auto;
+}
+
 #left-sidebar {
     -webkit-border-radius: 5;
     -moz-border-radius: 5;
@@ -93,4 +98,12 @@ h4 {
     border: 0px solid #C0C2C5;
     font-size: 16px;
     font-weight: bold;
+}
+
+.qColor{
+  background-color: #7FFFD4;
+}
+
+.aColor{
+  background-color: #ADFF2F;
 }

@@ -5,9 +5,35 @@ var time = new Date();
 //var minutes = time.getUTCMinutes();
 var response = "FRIEND BOT: Hello";
 var borkDrive = 0;
+var click = 0;
+var waitResponse = false;
+//var fallback = true;
+
+function run3(){
+  if(waitResponse == true){
+    response = "FRIEND BOT: Sounds good.";
+    document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>";
+    response = "FRIEND BOT: Hello";
+    waitResponse = false;
+  }
+}
+
+function run2(){
+  input = document.getElementById("input").value;
+
+  function randomNumberGenerator(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+  }
+  waitResponse = true;
+
+  var rQuestion = ["FRIEND BOT: How are you today?","FRIEND BOT: Do you feel well?","FRIEND BOT: Am I boring?"];
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + rQuestion[randomNumberGenerator(0,2)] + "</p> <hr>";
+
+}
 
 function run1() {
 input = document.getElementById("input").value;
+click++;
 
 var pic = ["http://cdn.funnyisms.com/c6269df2-fc86-42e9-8aa3-28943c490e19.jpg",                        //0
 "https://img.ifcdn.com/images/e6535f957cb7b8ddb46b486d2d645db86e1e1c603f1cc7f46313509dc094d545_1.jpg", //1
@@ -31,54 +57,44 @@ function randomNumberGenerator(min,max){
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-
 var a = input.search(/how are you/i);
 var b = input.search(/time/i);
 var c = input.search(/name/i);
 var d = input.search(/old/i);
 var e = input.search(/picture/i);
 var f = input.search(/bork/i);
-var g = input.search(/weather/i);
-var h = input.search(/color/i);
-var i = input.search(/creator/i);
-var j = input.search(/ /i); // ¯\_(ツ)_/¯ when nothing is written in text box
+var gg = input.search(/weather/i);
+var hh = input.search(/color/i);
+var ii = input.search(/creator/i);
+var jj = input.search(/joke/i);
 
-/*    if(hour > 12){
-  hour = hour - 7;
-  minutes += " AM"
-}
-else{
-  minutes += " PM"
-}     */
-
-
-question = "USER: " + input + "<br> <hr>"
+question = "<p class=" + "qColor" + "> USER: " + input + "</p> <hr>"
 document.getElementById("chat-area").innerHTML += question;
 
 if(input == "hi" || input == "hello" || input == "Hi" || input == "Hello"){ //hello response
-   document.getElementById("chat-area").innerHTML += response + "<br> <hr>";
+   document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>";
 }
 else if(a > -1){
   response = "FRIEND BOT: Good";
-  document.getElementById("chat-area").innerHTML += response + "<br> <hr>";  //how are you?
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>";  //how are you?
   response = "FRIEND BOT: Hello";
 }
 
 else if(b > -1){
   //response = "FRIEND BOT: " + hour + ":" + minutes;
-  document.getElementById("chat-area").innerHTML += "FRIEND BOT: " + Date() + "<br> <hr>"; //what time is it?
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + "FRIEND BOT: " + Date() + "</p> <hr>"; //what time is it?
   response = "FRIEND BOT: Hello";
 }
 
 else if(c > -1){
   response = "FRIEND BOT: My name is FRIEND BOT. I am here to chat with you when you are lonely. I am your robotic friend.";
-  document.getElementById("chat-area").innerHTML += response + "<br> <hr>"; //what is your name?
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>"; //what is your name?
   response = "FRIEND BOT: Hello";
 }
 
 else if(d > -1){
   response = "FRIEND BOT: I was created on  September 19, 2016.";
-  document.getElementById("chat-area").innerHTML += response + "<br> <hr>"; //how old are you?
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>"; //how old are you?
   response = "FRIEND BOT: Hello";
 }
 
@@ -92,7 +108,7 @@ else if(e > -1){
   document.getElementById("chat-area").appendChild(x);
   document.getElementById("chat-area").innerHTML += "<br> Bork Drive: " + borkDrive + "0% <br> <hr>";
 
-  if(borkDrive == 10){
+  if(borkDrive == 2){
     response = "FRIEND BOT: Bork Drive Max Capacity Achieved!!! Bork Drive Overlaod!!!  Rleasing Borks!!!"; //borkdrive
     var y = document.createElement("IMG");
     y.setAttribute("src", "drill doggo.png");
@@ -102,7 +118,7 @@ else if(e > -1){
     document.getElementById("chat-area").appendChild(y);
     document.getElementById("chat-area").innerHTML += "<br>";
     for(var z=0; z<85; z++){
-      document.getElementById("chat-area").innerHTML += "Bork "
+      document.getElementById("chat-area").innerHTML += "Bork ";
     }
     response = "FRIEND BOT: Hello";
     borkDrive = 0;
@@ -111,27 +127,47 @@ else if(e > -1){
 
 else if(f > -1){
   response = "DOGGO: BORK!";
-  document.getElementById("chat-area").innerHTML += response + "<br> <hr>"; //how old are you?
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>"; //BORK
   response = "FRIEND BOT: Hello";
 }
 
+else if(gg > -1){
+  response = "FRIEND BOT: " + "¯\_(ツ)_/¯" + " Why don't you check.";
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>"; //weather
+  response = "FRIEND BOT: Hello";
+}
 
-/*else if(borkDrive == 2){
-  response = "FRIEND BOT: Bork Drive Max Capacity Achieved!!! Bork Drive Overlaod";
-  var y = document.createElement("Img2");
-  y.setAttribute("src", "drill doggo.png");
-  y.setAttribute("width", "350");
-  y.setAttribute("alt", "img");
-  document.getElementById("chat-area").innerHTML += response + "<br>"; //borkdrive
-  for(var z=0; z<50; z++){
-    document.getElementById("chat-area").innerHTML += "Bork "
+else if(hh > -1){
+  response = "FRIEND BOT: My favorite color is light green.";
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>"; //color
+  response = "FRIEND BOT: Hello";
+}
+
+else if(ii > -1){
+  response = "FRIEND BOT: My creator is Owen Vandevelde.";
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>"; //creator
+  response = "FRIEND BOT: Hello";
+}
+
+else if(jj > -1){
+  response = "FRIEND BOT: Why did the chicken cross the road?";
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>"; //joke
+  response = "FRIEND BOT: Hello";
+}
+
+else if(waitResponse == true){
+  response = "FRIEND BOT: Sounds good.";
+  if(click >= 1){
+    document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>";
   }
   response = "FRIEND BOT: Hello";
-}*/
+  waitResponse = false;
+  click = 0;
+}
 
-else{
+else {
   response = "FRIEND BOT: I don't under stand what you said there. Say something else that I might understand.";
-  document.getElementById("chat-area").innerHTML += response + "<br> <hr>";                                   //fallback response
+  document.getElementById("chat-area").innerHTML += "<p class=" + "aColor" + ">" + response + "</p> <hr>";      //fallback response
   response = "FRIEND BOT: Hello";
 }
 
